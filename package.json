@@ -1,0 +1,31 @@
+{
+  "name": "shipnotes",
+  "version": "0.1.0",
+  "description": "Release notes for your GitHub project, written by Claude from what actually changed.",
+  "author": "Goodhope Technologies LLC",
+  "license": "MIT",
+  "private": true,
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/core.test.js",
+    "dist": "electron-builder --win msi --publish never"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.1"
+  },
+  "devDependencies": {
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.goodhopetechnologies.shipnotes",
+    "productName": "Shipnotes",
+    "copyright": "Copyright © 2026 Goodhope Technologies LLC",
+    "files": ["src/**/*", "package.json"],
+    "directories": { "output": "dist" },
+    "artifactName": "Shipnotes-${version}-${arch}.${ext}",
+    "win": { "target": [{ "target": "msi", "arch": ["x64"] }], "icon": "build/icon.ico" },
+    "msi": { "oneClick": true, "perMachine": false, "createDesktopShortcut": true, "createStartMenuShortcut": true, "runAfterFinish": true }
+  }
+}
